@@ -1,0 +1,24 @@
+[
+    {
+        "field": "id",
+        "headerName": "ID",
+        "width": 40
+    },
+    {
+        "field": "productName",
+        "headerName": "Product Name",
+        "width": 90
+    },
+    {
+        "field": "price",
+        "headerName": "Price",
+        "type": "Number",
+        "width": 40
+    },
+    {
+        "field": "quantity",
+        "headerName": "Quantity",
+        "type": "Number",
+        "width": 40
+    }
+]
