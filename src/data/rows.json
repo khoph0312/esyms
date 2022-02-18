@@ -1,24 +1,56 @@
 [
-    {
-        "field": "id",
-        "headerName": "ID",
-        "width": 40
+    { 
+        "id": 1, 
+        "productName": "mask", 
+        "price": "13.90", 
+        "quantity": 35 
     },
-    {
-        "field": "productName",
-        "headerName": "Product Name",
-        "width": 90
+    { 
+        "id": 2, 
+        "productName": "panadol", 
+        "price": "10.95", 
+        "quantity": 42 
     },
-    {
-        "field": "price",
-        "headerName": "Price",
-        "type": "Number",
-        "width": 40
+    { 
+        "id": 3, 
+        "productName": "dental floss", 
+        "price": "5.10", 
+        "quantity": 45 
     },
-    {
-        "field": "quantity",
-        "headerName": "Quantity",
-        "type": "Number",
-        "width": 40
+    { 
+        "id": 4, 
+        "productName": "alcohol pads", 
+        "price": "12.50", 
+        "quantity": 16 
+    },
+    { 
+        "id": 5, 
+        "productName": "hand sanitizer", 
+        "price": "6.75",
+        "quantity": 23 
+    },
+    { 
+        "id": 6, 
+        "productName": "tissue", 
+        "price": "1.50", 
+        "quantity": 150 
+    },
+    { 
+        "id": 7, 
+        "productName": "cotton", 
+        "price": "4.33", 
+        "quantity": 44 
+    },
+    { 
+        "id": 8, 
+        "productName": "test kit", 
+        "price": "17.50", 
+        "quantity": 36 
+    },
+    { 
+        "id": 9, 
+        "productName": "toothpaste", 
+        "price": "8.00", 
+        "quantity": 65 
     }
 ]
