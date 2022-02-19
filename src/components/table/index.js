@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './styles';
 import Table from '@mui/material/Table';
 import TableContainer from '@mui/material/TableContainer';
@@ -9,7 +9,6 @@ import TableCell from '@mui/material/TableCell';
 import TableFooter from '@mui/material/TableFooter';
 import TableRow from '@mui/material/TableRow';
 import TablePagination from "./pagination";
-import { display, width } from '@mui/system';
 
 const TableComponent = ({
   rows,
