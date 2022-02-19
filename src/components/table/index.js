@@ -9,13 +9,15 @@ import TableCell from '@mui/material/TableCell';
 import TableFooter from '@mui/material/TableFooter';
 import TableRow from '@mui/material/TableRow';
 import TablePagination from "./pagination";
+import { useSelector } from 'react-redux';
 
 const TableComponent = ({
   rows,
-  columns,
+  columns
 }) => {
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  // const [page, setPage] = React.useState(0);
+  const page = useSelector(state => state.page);
+  const rowsPerPage = useSelector(state => state.rowNum);
 
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
@@ -62,9 +64,7 @@ const TableComponent = ({
             <TablePagination 
               rows={rows} 
               page={page} 
-              setPage={setPage}
               rowsPerPage={rowsPerPage}
-              setRowsPerPage={setRowsPerPage}
             />
           </TableRow>
         </TableFooter>

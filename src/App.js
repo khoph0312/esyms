@@ -7,7 +7,7 @@ import { AppContainer } from "./styles";
 import TextField from '@mui/material/TextField';
 import { Grid } from '@mui/material';
 
-function App() {
+const App = (store) => {
   
   const [searchContent, setSearchContent] = useState(null);
   const [filteredRows, setFilteredRows] = useState(rows);
@@ -36,7 +36,7 @@ function App() {
           />
         </Grid>
         <Grid container xs={12} justifyContent="center">
-          <Table rows={filteredRows} columns={columns} />
+          <Table rows={filteredRows} columns={columns} store={store} />
         </Grid>
       </Grid>
     </AppContainer>

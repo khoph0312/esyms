@@ -5,35 +5,31 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import TablePagination from '@mui/material/TablePagination';
 import { useTheme } from '@mui/material/styles';
+import { increasePage, decreasePage, changeDisplayRow } from "../../redux";
+import { useDispatch } from "react-redux";
 
 
 const TablePaginationComponent = ({
     rows,
     page,
-    setPage,
     rowsPerPage,
-    setRowsPerPage
 }) => {
-  
-    const handleChangePage = (event, newPage) => {
-      setPage(newPage);
-    };
+    const dispatch = useDispatch();
   
     const handleChangeRowsPerPage = (event) => {
-      setRowsPerPage(parseInt(event.target.value));
-      setPage(0);
+        dispatch(changeDisplayRow(parseInt(event.target.value)));
     };
 
     const TablePaginationActions = (props) => {
         const theme = useTheme();
-        const { count, page, rowsPerPage, onPageChange } = props;
+        const { count, page, rowsPerPage } = props;
     
-        const handleBackButtonAction = (event) => {
-            onPageChange(event, page - 1);
+        const handleBackButtonAction = () => {
+            dispatch(decreasePage());
         };
     
-        const handleNextButtonAction = (event) => {
-            onPageChange(event, page + 1);
+        const handleNextButtonAction = () => {
+            dispatch(increasePage());
         };
     
         return (
@@ -64,7 +60,6 @@ const TablePaginationComponent = ({
             SelectProps={{
                 native: true,
             }}
-            onPageChange={handleChangePage}
             onRowsPerPageChange={handleChangeRowsPerPage}
             ActionsComponent={TablePaginationActions}
             sx={{width: "100%"}}
