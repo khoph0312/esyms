@@ -13,7 +13,7 @@ import { display, width } from '@mui/system';
 
 const TableComponent = ({
   rows,
-  columns
+  columns,
 }) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -47,7 +47,7 @@ const TableComponent = ({
                 {row.price}
               </TableCell>
               <TableCell style={{ width: 100 }}>
-                {row.width}
+                {row.quantity}
               </TableCell>
             </TableRow>
           ))}
