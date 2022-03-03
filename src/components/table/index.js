@@ -10,6 +10,8 @@ import TableFooter from '@mui/material/TableFooter';
 import TableRow from '@mui/material/TableRow';
 import TablePagination from "./pagination";
 import { useSelector } from 'react-redux';
+import Grid from "@mui/material/Grid"
+
 
 const TableComponent = ({
   rows,
@@ -38,17 +40,19 @@ const TableComponent = ({
             : rows
           ).map((row) => (
             <TableRow key={row.name}>
-              <TableCell style={{ width: 100 }}>
-                {row.id}
+              <TableCell>
+                <Grid container justifyContent={"center"}>
+                <img src={`${process.env.REACT_APP_IMG_URL}${row.img[0].src}`} alt="product item" width={100}  />
+                </Grid>
               </TableCell>
-              <TableCell style={{ width: 100 }}>
-                {row.productName}
+              <TableCell>
+                {row.name.en}
               </TableCell>
-              <TableCell style={{ width: 100 }}>
-                {row.price}
+              <TableCell>
+                {(Math.round(row.price * 100) / 100).toFixed(2)}
               </TableCell>
-              <TableCell style={{ width: 100 }}>
-                {row.quantity}
+              <TableCell>
+                {row.rating === null ? "N/A" : row.rating}
               </TableCell>
             </TableRow>
           ))}

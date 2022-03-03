@@ -1,38 +1,53 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Table from "./components/table"
-import rows from './data/rows.json'
 import columns from "./data/columns.json"
 import { AppContainer } from "./styles";
-import TextField from '@mui/material/TextField';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
 import { Grid } from '@mui/material';
+import axios from "axios";
+import InputAdornment from '@mui/material/InputAdornment';
+import IconButton from '@mui/material/IconButton';
+import SearchIcon from '@mui/icons-material/Search';
 
 const App = (store) => {
   
   const [searchContent, setSearchContent] = useState(null);
-  const [filteredRows, setFilteredRows] = useState(rows);
+  const [filteredRows, setFilteredRows] = useState([]);
 
   const onSearchChange = (event) => {
     setSearchContent(event.target.value);
   }
 
-  useEffect(() => {
+  const searchItem = () => {
     if (searchContent === null || searchContent === "") {
-      setFilteredRows(rows);
+      setFilteredRows([]);
     } else {
-      setFilteredRows(rows.filter(({productName}) => {
-        return productName.includes(searchContent.toLowerCase());
-      }))
+      axios.get(`${process.env.REACT_APP_API_URL}${searchContent}`)
+        .then((response) => {
+          setFilteredRows(response.data.results.docs);
+        })
     }
-  }, [searchContent])
+  }
 
   return (
     <AppContainer className="App" >
       <Grid container>
         <Grid xs={12} style={{padding: "10px"}}>
-          <TextField
-            label="Type here to search"
+        <InputLabel>Search for Item</InputLabel>
+          <OutlinedInput
             onChange={onSearchChange}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  onClick={searchItem}
+                  edge="end"
+                >
+                  {<SearchIcon />}
+                </IconButton>
+              </InputAdornment>
+            }
           />
         </Grid>
         <Grid container xs={12} justifyContent="center">
